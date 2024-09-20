@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listar Libros</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto+Slab:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://www.uts.edu.co/sitio/wp-content/uploads/2019/11/UTS_5885-1-1024x683.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #444;
+        }
+        header, footer {
+            background-color: rgba(52, 58, 64, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: 'Roboto Slab', serif;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            width: 90%;
+        }
+        h1 {
+            color: black;
+            font-family: 'Roboto Slab', serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgba(52, 58, 64, 0.9);
+            color: #fff;
+        }
+        th:first-child, td:first-child {
+            width: 10%;
+        }
+        th:nth-child(2), td:nth-child(2) {
+            width: 60%;
+        }
+        th:last-child, td:last-child {
+            width: 30%;
+        }
+        a.btn {
+            margin-right: 10px;
+        }
+        footer {
+            background-color: rgba(52, 58, 64, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lista de Libros</h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="libro : ${libros}">
+                    <td th:text="${libro.id}"></td>
+                    <td th:text="${libro.nombre}"></td>
+                    <td>
+                        <a href="@{/libro/editar/{id}(id=${libro.id})}" class="btn btn-primary">Editar</a>
+                        <a href="@{/libro/eliminar/{id}(id=${libro.id})}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/libro/crear" class="btn btn-success">Crear Nuevo Libro</a>
+        <a href="/" class="btn btn-secondary btn-regresar">Regresar</a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Biblioteca UTS. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+
+

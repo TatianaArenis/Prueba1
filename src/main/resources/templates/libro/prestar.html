@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préstamo de Libro</title>
+</head>
+<body>
+    <h1>Préstamo de Libro</h1>
+    <form th:action="@{/libro/prestar/{id}(id=${libro.id})}" method="post">
+        <input type="hidden" name="usuarioId" value="" />
+        <p>Nombre del Libro: <strong th:text="${libro.nombre}"></strong></p>
+        <p>Ingrese el ID del Usuario que solicita el préstamo:</p>
+        <input type="text" name="usuarioId" />
+        <button type="submit">Realizar Préstamo</button>
+    </form>
+    <a href="/libro/listar">Volver a la lista de libros</a>
+</body>
+</html>

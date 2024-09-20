@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Libros de Usuarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+        header, footer {
+            background-color: #00796b;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #00796b;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            margin-top: 10px;
+        }
+        footer {
+            background-color: #00796b;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Libros Seleccionados por Usuarios</h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Libros</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usuario : ${usuarios}">
+                    <td th:text="${usuario.nombre}"></td>
+                    <td>
+                        <ul>
+                            <li th:each="libro : ${usuario.libros}" th:text="${libro.nombre}"></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/usuario/listar" class="btn btn-secondary mt-3">Volver a la lista de usuarios</a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Biblioteca UTS. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

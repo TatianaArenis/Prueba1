@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Administradores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Roboto+Slab:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://www.uts.edu.co/sitio/wp-content/uploads/2019/11/UTS_5885-1-1024x683.jpg') no-repeat center center fixed; /* Replace with your image URL */
+            background-size: cover;
+            color: #444;
+        }
+        header, footer {
+            background-color: rgba(52, 58, 64, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: 'Roboto Slab', serif;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            width: 90%;
+        }
+        h1 {
+            color:black;
+            font-family: 'Roboto Slab', serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .actions {
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        footer {
+            background-color: rgba(52, 58, 64, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lista de Administradores</h1>
+    </header>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="administrador : ${administradores}">
+                    <td th:text="${administrador.id}"></td>
+                    <td th:text="${administrador.nombre}"></td>
+                    <td class="actions">
+                        <a th:href="@{/admin/editar/{id}(id=${administrador.id})}" class="btn btn-sm btn-primary">Editar</a>
+                        <a th:href="@{/admin/eliminar/{id}(id=${administrador.id})}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/admin/crear" class="btn btn-success">Crear Nuevo Administrador</a>
+		<a href="javascript:history.back()" class="btn btn-secondary btn-regresar">Regresar</a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Biblioteca UTS. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+
